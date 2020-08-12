@@ -1,0 +1,55 @@
+HW2.GIT
+1. Move file from untracked to commit and the whole way back. Note: Do not skip any stage.
+    echo "HW2.1" > HW2.txt # working area
+    git add HW2.txt # staged aread
+    git commit -m "Added file HW2.txt" # repository area
+    git log 
+    git reset --soft HEAD~1  # staged area
+    git status
+    git restore --staged HW2.txt worknig area
+    git status
+2. Create situation when you changes in working directory going to be overwritten by update. And try to avoid the problem with `git stash` cmd
+    git checkout master
+    echo "HW2.2" > HW2_2.txt 
+    git add HW2_2.txt
+    git commit -m "Commit file HW2_2.txt"
+    git checkout -b HW2.2GIT
+    echo "Added changes to file HW2_2 from branch HW2.2GIT" >> HW2_2.txt 
+    git stash 
+    git checkout master
+    echo "Added changes to file HW2_2 from branch master" >> HW2_2.txt
+    git commit -am "Commit file  HW2_2.txt"
+    git checkout HW2.2GIT
+    cat HW2_2.txt
+        # file content 
+        #   $ cat HW2_2.txt
+        #    HW2.2
+    git stash apply     
+    cat HW2_2.txt
+        # file content 
+        #   $ cat HW2_2.txt
+        #    HW2.2
+        #    Added changes to file HW2_2 from branch HW2.2GIT
+3. Create annotated tag. Push it, Remove it
+     git checkout -b HW2.3
+     echo "HW2.3" > HW2_3.txt
+     git add HW2_3.txt
+     git commit -m "Commited file HW2_3.txt"
+     git tag -a HW2_3 -m "Added tag HW2_3"
+     git show HW2_3
+     git push origin HW2_3
+     git push origin --delete HW2_3
+     git tag -d HW2_3
+4. Create a branch from initial commit of master branch
+    git checkout master
+    git log --oneline
+    git checkout -b HW2_4 1c1a09d # commit sha
+5. Remove file from git repository only(leave it on file system)
+    git checkout -b HW2_5
+    echo "HW2_5" > HW2_5.txt
+    git add HW2_5.txt
+    git commit -m "Added file HW2_5.txt"
+    cat HW2_5.txt
+    git rm --cached HW2_5.txt
+    git status 
+    cat HW2_5.txt

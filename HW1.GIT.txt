@@ -16,4 +16,9 @@ HW1. GIT
     git merge HW1.1
     
 2. Create branch, push it to remote with different name, delete it from remote only
+    git checkout -b HW1.2 
+    git push -u origin HW1.2:HW1.2_new_name
+    git branch -vv
+    git push origin -d HW1.2_new_name
+  
 
