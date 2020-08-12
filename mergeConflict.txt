@@ -1,1 +1,2 @@
 FirstLine in file mergeConflict
+Second line in file mergeConflict
