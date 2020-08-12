@@ -1,0 +1,19 @@
+HW1. GIT
+1. Create merge conflict and resolve it
+    git init
+    echo "GIT Practie" > README.md 
+    touch HW1.GIT.txt
+    echo "FirstLine in file mergeConflict" > mergeConflict.txt
+    git add README.md HW1.GIT.txt mergeConflict.txt
+    git commit -m "Inititla commit Readme and HW1.GIT.txt files to master"
+    git branch HW1.1    
+    echo "Second line in file mergeConflict" >> mergeConflict.txt
+    git commit -am "Updated the mergeConflict added second line"
+    git checkout HW1.1
+    echo "Third line in file mergeConflict" >> mergeConflict.txt
+    git commit -am "Updated the mergeConflict added third line"
+    git checkout master
+    git merge HW1.1
+    
+2. Create branch, push it to remote with different name, delete it from remote only
+
